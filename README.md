@@ -4,6 +4,8 @@
 
 livCH4ipcc is an R package for calculating methane (CH4) emissions from livestock based on IPCC methodologies. It supports both Tier 1 and Tier 2 approaches for enteric fermentation and manure management, with seasonal variations and animal-specific parameters.
 
+<img src="img/logo.png" alt="Logo" width="400" height="400"/>
+
 ## Features
 
 - Calculation of enteric fermentation emissions using Tier 1 and Tier 2 methodologies
