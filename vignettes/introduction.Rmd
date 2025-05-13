@@ -1,0 +1,87 @@
+---
+title: "Introduction to livCH4ipcc"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to livCH4ipcc}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(livCH4ipcc)
+```
+
+## Introduction
+
+livCH4ipcc is an R package for calculating methane (CH4) emissions from livestock based on IPCC methodologies. It supports both Tier 1 and Tier 2 approaches for enteric fermentation and manure management, with seasonal variations and animal-specific parameters.
+
+## Basic Usage
+
+The package is built around two main classes:
+
+1. `User_Input`: For defining animal characteristics and management practices
+2. `Inventory`: For performing the emission calculations
+
+Here's a basic example of how to use the package:
+
+```{r eval=FALSE}
+# Create a User_input object for dairy cattle
+input <- User_Input$new(
+  animal_type = "dairy_cattle",
+  animal_number = 100,
+  weight = 650,
+  manure_excretion = 21900,
+  manure_cn = 15,
+  fraction_housing = 0.8,
+  fraction_grazing = 0.2,
+  feed_intake = 7300,
+  fraction_diet_grass = 0.3,
+  fraction_diet_beet = 0.05
+)
+
+# Create an Inventory object and run calculations
+inv <- Inventory$new(input)
+results <- inv$run_inventory()
+
+# Access the results
+print(results$emissions$ch4_total)
+```
+
+## Available Animal Types
+
+The package supports various livestock types, including:
+
+- dairy_cattle
+- beef_cattle
+- pigs
+- sheep
+- goats
+- poultry
+
+## Tier Levels
+
+The package implements two methodological tiers according to IPCC guidelines:
+
+- **Tier 1**: Uses default emission factors based on animal type
+- **Tier 2**: Uses more detailed animal-specific parameters to calculate emissions
+
+The appropriate tier is automatically selected based on the animal type and available input parameters.
+
+## Seasonal Variations
+
+For certain animal types (e.g., dairy cattle), the package can calculate seasonal emission factors for winter and summer conditions, based on differences in diet composition and management practices.
+
+## Configuration Files
+
+The package uses YAML configuration files to store default emission factors and parameters. These are located in the `inst/extdata` directory and can be customized if needed.
+
+## Next Steps
+
+For more advanced usage and customization options, see the "Advanced Usage" vignette.

@@ -1,0 +1,16 @@
+citHeader("To cite livCH4ipcc in publications use:")
+
+citEntry(
+  entry    = "Manual",
+  title    = "livCH4ipcc: Methane Emissions Calculator for Livestock",
+  author   = "João Serra",
+  year     = "2025",
+  note     = "R package version 0.1.0",
+  url      = "https://github.com/joaoserra/livCH4ipcc",
+  textVersion = paste(
+    "Serra, J. (2025).",
+    "livCH4ipcc: Methane Emissions Calculator for Livestock.",
+    "R package version 0.1.0.",
+    "https://github.com/joaoserra/livCH4ipcc"
+  )
+)

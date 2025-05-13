@@ -1,0 +1,135 @@
+# @source: https://envs.au.dk/fileadmin/envs/Emission_inventories/Reporting_sectors/Landbrug_sector_report.pdf
+
+# tier 2 
+enteric_fermentation_EFs:
+  dairy_cattle:
+    fraction_grass: 0.05
+    fraction_actual_grass: none 
+    max_manure_CH4: 0.24 # m3 CH4 / kg VS
+    IEF: 48.39
+
+  calf:
+    fraction_grass: 0
+    fraction_actual_grass: none 
+    max_manure_CH4: 0.18 # m3 CH4 / kg VS
+    IEF: 2.45
+
+  calf_:
+    fraction_grass: 0.36
+    fraction_actual_grass: 0.3 
+    max_manure_CH4: 0.18 # m3 CH4 / kg VS
+    IEF: 14.68
+
+  suckling_cattle:
+    fraction_grass: 0.61
+    fraction_actual_grass: none  
+    max_manure_CH4: 0.18 # m3 CH4 / kg VS
+    IEF: 22.48
+
+  bull:
+    fraction_grass: 0
+    fraction_actual_grass: none  
+    max_manure_CH4: 0.18 # m3 CH4 / kg VS
+    IEF: 2.08
+
+  bull_:
+    fraction_grass: 0
+    fraction_actual_grass: none 
+    max_manure_CH4: 0.18 # m3 CH4 / kg VS
+    IEF: 19.24
+
+  sheep:
+    fraction_grass: 0.73
+    fraction_actual_grass: none 
+    max_manure_CH4: 0.19 # m3 CH4 / kg VS
+    IEF: 0.38
+
+  fattening_pigs:
+    fraction_grass: 0
+    fraction_actual_grass: none 
+    max_manure_CH4: 0.45 # m3 CH4 / kg VS
+    IEF: 1.30
+
+  sows:
+    fraction_grass: 0
+    fraction_actual_grass: none 
+    max_manure_CH4: 0.45 # m3 CH4 / kg VS
+    IEF: 11.80
+
+  piglets:
+    fraction_grass: 0
+    fraction_actual_grass: none 
+    max_manure_CH4: 0.45 # m3 CH4 / kg VS
+    IEF: 0.22
+
+  deer:
+    fraction_grass: 1
+    fraction_actual_grass: none 
+    max_manure_CH4: 0.18 # m3 CH4 / kg VS
+    IEF: 0.33
+
+  goats:
+    fraction_grass: 0.73
+    fraction_actual_grass: none 
+    max_manure_CH4: 0.19 # m3 CH4 / kg VS
+    IEF: 0.45
+
+  horses:
+    fraction_grass: 0.5
+    fraction_actual_grass: none 
+    max_manure_CH4: 0.3 # m3 CH4 / kg VS
+    IEF: 3.25
+
+  turkeys:
+    fraction_grass: 0
+    fraction_actual_grass: none 
+    max_manure_CH4: 0.0036 # m3 CH4 / kg VS
+    IEF: 0.0294
+
+  turkeys_:
+    fraction_grass: 0
+    fraction_actual_grass: none 
+    max_manure_CH4: 0.0036 # m3 CH4 / kg VS
+    IEF: 0.0294
+
+  geese:
+    fraction_grass: 1
+    fraction_actual_grass: none 
+    max_manure_CH4: 0.0036 # m3 CH4 / kg VS
+    IEF: 0.0211
+
+  ducks:
+    fraction_grass: 0
+    fraction_actual_grass: none 
+    max_manure_CH4: 0.0036 # m3 CH4 / kg VS
+    IEF: 0.0145
+
+  pheasant:
+    fraction_grass: 1
+    fraction_actual_grass: none 
+    max_manure_CH4: 0.0036 # m3 CH4 / kg VS
+    IEF: 0.0148
+
+  laying_hens:
+    fraction_grass: 0
+    fraction_actual_grass: none 
+    max_manure_CH4: 0.0039 # m3 CH4 / kg VS
+    IEF: 0.0444
+
+  laying_hens_:
+    fraction_grass: 0
+    fraction_actual_grass: none 
+    max_manure_CH4: 0.0039 # m3 CH4 / kg VS
+    IEF: 0.0444
+
+  broilers: 
+    fraction_grass: 0
+    fraction_actual_grass: none 
+    max_manure_CH4: 0.00036 # m3 CH4 / kg VS
+    IEF: 0.00246
+
+  broilers_:
+    fraction_grass: 0
+    fraction_actual_grass: none 
+    max_manure_CH4: 0.00036 # m3 CH4 / kg VS
+    IEF: 0.00246

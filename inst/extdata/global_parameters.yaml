@@ -1,0 +1,6 @@
+global_parameters:
+    f_ash: 0.045
+    f_dm_VS: 0.8
+    dm_manure: 0.15
+    dm_straw: 0.85
+    max_manure_CH4: 0.24

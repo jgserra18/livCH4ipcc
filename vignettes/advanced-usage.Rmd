@@ -1,0 +1,167 @@
+---
+title: "Advanced Usage of livCH4ipcc"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Advanced Usage of livCH4ipcc}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(livCH4ipcc)
+```
+
+## Advanced Usage of livCH4ipcc
+
+This vignette covers advanced usage scenarios and customization options for the livCH4ipcc package.
+
+### Customizing Input Parameters
+
+The `User_Input` class accepts a wide range of parameters to customize your emission calculations:
+
+```{r eval=FALSE}
+# Create a User_input object with detailed parameters
+input <- User_Input$new(
+  animal_type = "dairy_cattle",
+  animal_number = 100,
+  weight = 650,
+  age = 4,                    # Age in years
+  gender = "female",          # Gender of animals
+  reproduction = TRUE,        # Whether animals are used for reproduction
+  manure_excretion = 21900,   # kg/(head.yr)
+  manure_cn = 15,             # C:N ratio of manure
+  fraction_housing = 0.8,     # Fraction of time in housing
+  fraction_grazing = 0.2,     # Fraction of time grazing
+  fraction_actual_grass = 0.15, # Actual days on grass considering climate
+  feed_intake = 7300,         # kg DM/(head.yr)
+  fraction_diet_grass = 0.3,  # Fraction of grass in diet
+  fraction_diet_beet = 0.05,  # Fraction of beet in diet
+  max_manure_CH4 = 0.24       # m3 CH4/kg VS
+)
+```
+
+### Debug Mode
+
+You can enable debug mode to get more verbose output during calculations:
+
+```{r eval=FALSE}
+# Create Inventory object with debug mode enabled
+inv <- Inventory$new(input, debug_mode = TRUE)
+results <- inv$run_inventory()
+```
+
+### Accessing Detailed Results
+
+The results object contains detailed information about emissions from different sources:
+
+```{r eval=FALSE}
+# Access enteric fermentation emissions
+enteric_emissions <- results$emissions$ch4_enteric
+
+# Access manure management emissions by source
+housing_emissions <- results$emissions$ch4_manure$housing
+grazing_emissions <- results$emissions$ch4_manure$grass
+
+# Access total emissions
+total_emissions <- results$emissions$ch4_total
+
+# Access emission factors used in calculations
+emission_factors <- results$emission_factors
+```
+
+### Customizing Configuration Files
+
+The package uses YAML configuration files to store default emission factors and parameters. You can customize these files or create your own:
+
+1. First, locate the default configuration files:
+
+```{r eval=FALSE}
+system.file("extdata/enteric_fermentation.yaml", package = "livCH4ipcc")
+system.file("extdata/global_parameters.yaml", package = "livCH4ipcc")
+system.file("extdata/manure_management.yaml", package = "livCH4ipcc")
+```
+
+2. Copy and modify these files to create your custom configurations
+
+3. Use your custom configuration files when creating an Inventory object:
+
+```{r eval=FALSE}
+# Create an Inventory object with custom configuration paths
+inv <- Inventory$new(input)
+inv$config_paths <- list(
+  enteric_fermentation = "path/to/custom/enteric_fermentation.yaml",
+  global_parameters = "path/to/custom/global_parameters.yaml",
+  manure_management = "path/to/custom/manure_management.yaml"
+)
+
+# Run inventory with custom configurations
+results <- inv$run_inventory()
+```
+
+### Working with Multiple Animal Types
+
+You can calculate emissions for multiple animal types and combine the results:
+
+```{r eval=FALSE}
+# Create inputs for different animal types
+dairy_input <- User_Input$new(animal_type = "dairy_cattle", animal_number = 100, ...)
+beef_input <- User_Input$new(animal_type = "beef_cattle", animal_number = 200, ...)
+pig_input <- User_Input$new(animal_type = "pigs", animal_number = 500, ...)
+
+# Calculate emissions for each animal type
+dairy_results <- Inventory$new(dairy_input)$run_inventory()
+beef_results <- Inventory$new(beef_input)$run_inventory()
+pig_results <- Inventory$new(pig_input)$run_inventory()
+
+# Combine total emissions
+total_farm_emissions <- dairy_results$emissions$ch4_total + 
+                        beef_results$emissions$ch4_total + 
+                        pig_results$emissions$ch4_total
+```
+
+### Seasonal Calculations
+
+For dairy cattle, you can access seasonal emission factors:
+
+```{r eval=FALSE}
+# Create an Inventory object
+inv <- Inventory$new(input)
+
+# Calculate seasonal emission factors
+seasonal_ef <- inv$calculate_seasonal_ef()
+
+# Access winter and summer emission factors
+winter_ef <- seasonal_ef$winter_ef
+summer_ef <- seasonal_ef$summer_ef
+```
+
+## Extending the Package
+
+The package is built using R6 classes, which makes it easy to extend with your own custom functionality:
+
+```{r eval=FALSE}
+# Create a custom Inventory class that extends the base class
+CustomInventory <- R6::R6Class("CustomInventory",
+  inherit = Inventory,
+  public = list(
+    # Add custom methods
+    calculate_carbon_footprint = function() {
+      # Convert CH4 emissions to CO2 equivalent (GWP of CH4 = 28)
+      co2e <- self$results$emissions$ch4_total * 28
+      return(co2e)
+    }
+  )
+)
+
+# Use the custom class
+custom_inv <- CustomInventory$new(input)
+results <- custom_inv$run_inventory()
+carbon_footprint <- custom_inv$calculate_carbon_footprint()
+```

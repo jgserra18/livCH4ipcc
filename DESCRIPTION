@@ -1,0 +1,22 @@
+Package: livCH4ipcc
+Title: Methane Emissions Calculator for Livestock
+Version: 0.1.0
+Authors@R: 
+    person("João", "Serra", , "jserra@agro.au.dk", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-3561-5350"))
+Description: A comprehensive tool for calculating methane (CH4) emissions from 
+    livestock based on IPCC methodologies. Supports both Tier 1 and Tier 2 
+    approaches for enteric fermentation and manure management, with seasonal 
+    variations and animal-specific parameters.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports: 
+    R6,
+    yaml
+Suggests:
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown
+Config/testthat/edition: 3

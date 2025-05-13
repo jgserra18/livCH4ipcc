@@ -1,0 +1,126 @@
+# @source: https://envs.au.dk/fileadmin/envs/Emission_inventories/Reporting_sectors/Landbrug_sector_report.pdf
+enteric_fermentation_EFs:
+  dairy_cattle:
+    slurry: 12.4
+    biogas: 7.48
+    deep_bedding_m1month: 17 # more than 1 month
+    deep_bedding_l1month: 3 # less than 1 month
+    solid: 2
+    grazing: 1
+    yards: 1
+
+  calf:
+    slurry: 12.4
+    biogas: 7.48
+    deep_bedding_m1month: 17 # more than 1 month
+    deep_bedding_l1month: 3 # less than 1 month
+    solid: 2
+    grazing: 1
+    yards: 1
+
+  calf_:
+    slurry: 12.4
+    biogas: 7.48
+    deep_bedding_m1month: 17 # more than 1 month
+    deep_bedding_l1month: 3 # less than 1 month
+    solid: 2
+    grazing: 1
+    yards: 1
+
+  suckling_cattle:
+    slurry: 12.4
+    biogas: 7.48
+    deep_bedding_m1month: 17 # more than 1 month
+    deep_bedding_l1month: 3 # less than 1 month
+    solid: 2
+    grazing: 1
+    yards: 1
+
+  bull:
+    slurry: 12.4
+    biogas: 7.48
+    deep_bedding_m1month: 17 # more than 1 month
+    deep_bedding_l1month: 3 # less than 1 month
+    solid: 2
+    grazing: 1
+    yards: 1
+
+  bull_:
+    slurry: 12.4
+    biogas: 7.48
+    deep_bedding_m1month: 17 # more than 1 month
+    deep_bedding_l1month: 3 # less than 1 month
+    solid: 2
+    grazing: 1
+    yards: 1
+
+  sheep:
+    deep_bedding: 1
+    grazing: 1
+    yards: 1
+
+  fattening_pigs:
+    slurry: 13.37
+    biogas: 10.38
+    deep_bedding: 11.4
+    solid: 3
+
+  sows:
+    slurry: 13.37
+    biogas: 10.38
+    deep_bedding: 14.67
+    solid: 3
+
+  piglets:
+    slurry: 13.37
+    biogas: 10.38
+    deep_bedding: 7.2
+    solid: 3
+
+  deer:
+    grazing: 1
+
+  goats:
+    deep_bedding: 1
+    grazing: 1
+    yards: 1
+
+  horses:
+    deep_bedding: 1
+    grazing: 1
+    yards: 1
+
+  turkeys:
+    grazing: 1
+    others: 1.5
+
+  turkeys_:
+    grazing: 1
+    others: 1.5
+
+  geese:
+    grazing: 1
+    others: 1.5
+
+  ducks:
+    grazing: 1
+    others: 1.5
+
+  pheasant:
+    grazing: 1
+
+  laying_hens:
+    grazing: 1
+    others: 1.5
+
+  laying_hens_:
+    grazing: 1
+    others: 1.5
+
+  broilers: 
+    grazing: 1
+    others: 1.5
+
+  broilers_:
+    grazing: 1
+    others: 1.5

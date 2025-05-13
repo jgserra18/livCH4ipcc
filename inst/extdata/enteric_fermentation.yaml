@@ -1,0 +1,217 @@
+# Feed Unit/yr (1 kg barley with DM of 85%)
+# @source: https://envs.au.dk/fileadmin/envs/Emission_inventories/Reporting_sectors/Landbrug_sector_report.pdf
+#TODO: dynamica livestock feeding will need to be implemented
+#TODO: dairy cows with high milk production will have their enteric CH4 emissions underestimated
+
+
+# tier 2 
+enteric_fermentation_EFs:
+  dairy_cattle:
+    feed_intake: 8082 # Feed Unit/yr 
+    GE_winter: 18.9 # Feed Unit/yr 
+    GE_summer: 18.9 # MJ per Feed Unit
+    feed_grass: 5 # % feeding days / yr
+    methane_conversion_factor: 6.0 # % gross energy (GE)
+    implified_emission_factor: 164.69 # kg Ch4/head
+
+  calf:
+    weight: none 
+    age: 0-6 months 
+    reproduction: false 
+    feed_intake: 1047 # Feed Unit/yr 
+    GE_winter: 18.3 # Feed Unit/yr 
+    GE_summer: 18.83 # MJ per Feed Unit
+    feed_grass: 0 # % feeding days / yr
+    methane_conversion_factor: 6.5 # % gross energy (GE)
+    implified_emission_factor: 22.38 # kg Ch4/head
+
+  calf_:
+    weight: none 
+    age: 6 months
+    reproduction: true 
+    feed_intake: 2094 # Feed Unit/yr 
+    GE_winter: 25.75 # Feed Unit/yr 
+    GE_summer: 18.83 # MJ per Feed Unit
+    feed_grass: 30 # % feeding days / yr
+    methane_conversion_factor: 6.5 # % gross energy (GE)
+    implified_emission_factor: 56.86 # kg Ch4/head
+
+  suckling_cattle:
+    weight: 600 
+    age: 1 year
+    reproduction: false 
+    feed_intake: 2502 # Feed Unit/yr 
+    GE_winter: 34.402 # Feed Unit/yr 
+    GE_summer: 18.83 # MJ per Feed Unit
+    feed_grass: 61 # % feeding days / yr
+    methane_conversion_factor: 6.5 # % gross energy (GE)
+    implified_emission_factor: 72.18 # kg Ch4/head
+
+  bull:
+    weight: none  
+    age: 0-6 months # age
+    reproduction: false 
+    feed_intake: 665 # Feed Unit/yr 
+    GE_winter: 18.3 # Feed Unit/yr 
+    GE_summer: 18.83 # MJ per Feed Unit
+    feed_grass: 0 # % feeding days / yr
+    methane_conversion_factor: 3.0 # % gross energy (GE)
+    implified_emission_factor: 6.56 # kg Ch4/head
+
+  bull_:
+    weight: 440  
+    age: 6 months # to slaughter
+    reproduction: false 
+    feed_intake: 1234 # Feed Unit/yr 
+    GE_winter: 18.3 # Feed Unit/yr 
+    GE_summer: 18.83 # MJ per Feed Unit
+    feed_grass: 0 # % feeding days / yr
+    methane_conversion_factor: 3.0 # % gross energy (GE)
+    implified_emission_factor: 12.17 # kg Ch4/head
+
+  sheep:
+    weight: none 
+    age: none
+    reproduction: false 
+    feed_intake: 498 # Feed Unit/yr 
+    GE_winter: 29.95 # Feed Unit/yr 
+    GE_summer: 18.83 # MJ per Feed Unit
+    feed_grass: 73 # % feeding days / yr
+    methane_conversion_factor: 6.5 # % gross energy (GE)
+    implified_emission_factor: 12.72 # kg Ch4/head
+
+  fattening_pigs:
+    weight: none # all >31 kg 
+    age: none
+    reproduction: false 
+    feed_intake: 226 # Feed Unit/yr 
+    GE_winter: 17.25 # Feed Unit/yr 
+    GE_summer: 17.25 # MJ per Feed Unit
+    feed_grass: 0 # % feeding days / yr
+    methane_conversion_factor: 0.6 # % gross energy (GE)
+    implified_emission_factor: 0.43 # kg Ch4/head
+
+  sows:
+    weight: 0-6.7 # piglets 
+    age: none
+    reproduction: true 
+    feed_intake: 1472 # Feed Unit/yr 
+    GE_winter: 17.49 # Feed Unit/yr 
+    GE_summer: 17.49 # MJ per Feed Unit
+    feed_grass: 0 # % feeding days / yr
+    methane_conversion_factor: 0.6 # % gross energy (GE)
+    implified_emission_factor: 2.75 # kg Ch4/head
+
+  piglets:
+    weight: 6.7–31; 15–31  
+    age: none
+    reproduction: false
+    feed_intake: 46 # Feed Unit/yr 
+    GE_winter: 16.46 # Feed Unit/yr 
+    GE_summer: 16.46 # MJ per Feed Unit
+    feed_grass: 0 # % feeding days / yr
+    methane_conversion_factor: 0.6 # % gross energy (GE)
+    implified_emission_factor: 0.08 # kg Ch4/head
+
+  deer:
+    weight: none 
+    age: none
+    reproduction: false 
+    feed_intake: 668 # Feed Unit/yr 
+    GE_winter: 30.0 # Feed Unit/yr 
+    GE_summer: 18.83 # MJ per Feed Unit
+    feed_grass: 100 # % feeding days / yr
+    methane_conversion_factor: 5.0 # % gross energy (GE)
+    implified_emission_factor: 11.30 # kg Ch4/head
+
+  goats:
+    weight: none 
+    age: none
+    reproduction: false 
+    feed_intake: 667 # Feed Unit/yr 
+    GE_winter: 29.95 # Feed Unit/yr 
+    GE_summer: 18.83 # MJ per Feed Unit
+    feed_grass: 73 # % feeding days / yr
+    methane_conversion_factor: 5.0 # % gross energy (GE)
+    implified_emission_factor: 13.11 # kg Ch4/head
+
+  horses:
+    weight: 600 
+    age: none 
+    reproduction: false 
+    feed_intake: 1047 # Feed Unit/yr 
+    GE_winter: 18.3 # Feed Unit/yr 
+    GE_summer: 18.83 # MJ per Feed Unit
+    feed_grass: 0 # % feeding days / yr
+    methane_conversion_factor: 6.5 # % gross energy (GE)
+    implified_emission_factor: 27.93 # kg Ch4/head
+
+  turkeys:
+    weight: none 
+    age: none 
+    reproduction: false
+    gender: male
+    feed_intake: 50.7 # Feed Unit/yr 
+    GE_winter: 18.55 # Feed Unit/yr 
+    GE_summer: 18.55 # MJ per Feed Unit
+    feed_grass: 0 # % feeding days / yr
+    methane_conversion_factor: 0.0 # % gross energy (GE)
+    implified_emission_factor:  0.0001 # kg Ch4/head
+
+  turkeys_:
+    weight: none 
+    age: none 
+    reproduction: false
+    gender: female
+    feed_intake: 24.3 # Feed Unit/yr 
+    GE_winter: 18.55 # Feed Unit/yr 
+    GE_summer: 18.55 # MJ per Feed Unit
+    feed_grass: 0 # % feeding days / yr
+    methane_conversion_factor: 0.0 # % gross energy (GE)
+    implified_emission_factor:  0.0001 # kg Ch4/head
+
+  geese:
+    weight: none 
+    age: none 
+    reproduction: false 
+    feed_intake: 28 # Feed Unit/yr 
+    GE_winter: 18.19 # Feed Unit/yr 
+    GE_summer: 18.19 # MJ per Feed Unit
+    feed_grass: 100 # % feeding days / yr
+    methane_conversion_factor: none # % gross energy (GE)
+    implified_emission_factor: 0.00005 # kg Ch4/head
+
+  ducks:
+    weight: none 
+    age: none 
+    reproduction: false 
+    feed_intake: 9.75 # Feed Unit/yr 
+    GE_winter: 18.19 # Feed Unit/yr 
+    GE_summer: 18.19 # MJ per Feed Unit
+    feed_grass: 0 # % feeding days / yr
+    methane_conversion_factor: none # % gross energy (GE)
+    implified_emission_factor: 0.00003 # kg Ch4/head
+
+# tier 1
+  pheasant:
+    implified_emission_factor: 0.0047 # kg Ch4/head
+
+  laying_hens:
+    hpr: false 
+    age: 365 days
+    implified_emission_factor: 0.0010610 # kg Ch4/head
+
+  laying_hens_:
+    hpr: true  
+    age: 140 days
+    implified_emission_factor: 3.561e-3 # kg Ch4/head
+
+  broilers: 
+    age: 42 days
+    organic: false
+    implified_emission_factor: 1.5e-5 # kg Ch4/head
+
+  broilers_:
+    age: 91 days
+    organic: true
+    implified_emission_factor: 8.48e-5 # kg Ch4/head

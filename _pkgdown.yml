@@ -1,0 +1,42 @@
+url: https://joaoserra.github.io/livCH4ipcc/
+
+template:
+  bootstrap: 5
+  bootswatch: flatly
+
+navbar:
+  structure:
+    left:  [intro, reference, articles, tutorials, news]
+    right: [github]
+  components:
+    intro:
+      text: Get started
+      href: articles/introduction.html
+    reference:
+      text: Reference
+      href: reference/index.html
+    articles:
+      text: Articles
+      menu:
+      - text: "Introduction to livCH4ipcc"
+        href: articles/introduction.html
+      - text: "Advanced Usage of livCH4ipcc"
+        href: articles/advanced-usage.html
+    github:
+      icon: fab fa-github fa-lg
+      href: https://github.com/joaoserra/livCH4ipcc/
+
+reference:
+- title: "Main Classes"
+  desc: >
+    The main classes for calculating CH4 emissions
+  contents:
+  - User_Input
+  - Inventory
+- title: "Volatile Solids Functions"
+  desc: "Functions for calculating volatile solids"
+  contents:
+  - housing_volatile_solids
+  - manure_volatile_solids
+  - straw_volatile_solids
+  - grass_volatile_solids
