@@ -1,12 +1,7 @@
-# Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
-# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+# Simple pkgdown workflow
 on:
   push:
     branches: [main, master]
-  pull_request:
-    branches: [main, master]
-  release:
-    types: [published]
   workflow_dispatch:
 
 name: pkgdown
@@ -14,50 +9,40 @@ name: pkgdown
 jobs:
   pkgdown:
     runs-on: ubuntu-latest
-    # Only restrict concurrency for non-PR jobs
-    concurrency:
-      group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v3
 
-      - uses: r-lib/actions/setup-pandoc@v2
-
       - uses: r-lib/actions/setup-r@v2
         with:
           use-public-rspm: true
-          r-version: release
 
-      # Install system dependencies for R packages
+      - uses: r-lib/actions/setup-pandoc@v2
+
       - name: Install system dependencies
-        if: runner.os == 'Linux'
         run: |
           sudo apt-get update
-          sudo apt-get install -y libcurl4-openssl-dev libharfbuzz-dev libfribidi-dev
-          sudo apt-get install -y libxml2-dev libssl-dev
+          sudo apt-get install -y libcurl4-openssl-dev libxml2-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
 
-      # Install dependencies explicitly
-      - name: Install dependencies
+      - name: Install R dependencies
         run: |
-          install.packages(c("remotes", "pkgdown", "yaml", "R6"))
+          install.packages(c("remotes", "pkgdown"))
           remotes::install_deps(dependencies = TRUE)
+          remotes::install_github("r-lib/pkgdown")
         shell: Rscript {0}
 
-      # Build the package
       - name: Install package
         run: R CMD INSTALL .
 
-      # Build the pkgdown site
       - name: Build site
         run: |
-          pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE, devel = FALSE)
+          pkgdown::build_site(preview = FALSE)
         shell: Rscript {0}
 
-      - name: Deploy to GitHub pages 🚀
-        if: github.event_name != 'pull_request'
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
+      - name: Deploy to GitHub pages
+        if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          clean: false
-          branch: gh-pages
           folder: docs
+          branch: gh-pages
